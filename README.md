@@ -15,7 +15,8 @@ site/
 ├── robots.txt                  # Bloqueia /_backups nos buscadores
 │
 ├── content/                    # ✏️  TUDO QUE VOCÊ EDITA FICA AQUI
-│   └── textos-landing.js       # Textos, preços, links de pagamento, FAQ, simulador
+│   ├── textos-landing.js       # Textos, preços, links de pagamento, FAQ, simulador
+│   └── rastreamento.js         # ID do Pixel da Meta
 │
 ├── assets/
 │   ├── css/
@@ -23,7 +24,8 @@ site/
 │   │   └── components.css      # Componentes v2: ícones, animações, simulador, obra
 │   ├── js/
 │   │   ├── icons.js            # Ícones SVG (compartilhado)
-│   │   └── main.js             # Monta a landing e cuida das interações
+│   │   ├── main.js             # Monta a landing e cuida das interações
+│   │   └── pixel.js            # Pixel da Meta: PageView + InitiateCheckout
 │   └── img/
 │       └── favicon/            # favicon.svg, PNGs e ícones Apple/Android
 │
@@ -36,6 +38,7 @@ site/
 |--------------------------------------|---------------------------------|
 | Textos, preços, planos, FAQ          | `content/textos-landing.js`     |
 | Links de pagamento (Cakto)           | `content/textos-landing.js` → `links` |
+| ID do Pixel da Meta                  | `content/rastreamento.js` → `metaPixelId` |
 | Cores e fontes                       | `assets/css/base.css` → `:root` |
 | Favicon                              | `assets/img/favicon/` + `favicon.ico` |
 

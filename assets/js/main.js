@@ -14,6 +14,8 @@
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const resolveLink = (l) => (D.links && D.links[l]) || l || "#oferta";
+  // valor do plano para o pixel: usa "valor" se existir, senão converte "preco" ("19,90" → 19.9)
+  const valorDoPlano = (p) => Number(p.valor ?? String(p.preco).replace(/\./g, "").replace(",", ".")) || 0;
   const ico = (n, c) => (window.ICON ? window.ICON(n, c) : "");
   const brl = (n) => "R$ " + Math.round(n).toLocaleString("pt-BR");
 
@@ -72,7 +74,8 @@
           ${p.precoNota ? `<small>${p.precoNota}</small>` : ""}
         </div>
         <a class="btn ${p.destaque ? "btn--primary btn--pulse" : "btn--outline"} btn--block"
-           href="${esc(resolveLink(p.link))}" target="_blank" rel="noopener">${p.botao}</a>
+           href="${esc(resolveLink(p.link))}" target="_blank" rel="noopener"
+           data-checkout-valor="${valorDoPlano(p)}" data-checkout-plano="${esc(p.nome)}">${p.botao}</a>
       </article>`,
 
     "faq.itens": (f) => `
@@ -428,6 +431,15 @@
     }, { threshold: 0.6 }).observe(seal);
   }
 
+  /* ---------- Pixel: InitiateCheckout ao clicar em comprar ---------- */
+  function initCheckoutTracking() {
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-checkout-valor]");
+      if (!btn || !window.trackInitiateCheckout) return;
+      window.trackInitiateCheckout(btn.dataset.checkoutValor, btn.dataset.checkoutPlano);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     if (!D) { showDataError("SITE_DATA não encontrado"); return; }
     try { render(); } catch (e) { showDataError(e.message); console.error(e); return; }
@@ -443,5 +455,6 @@
     initFaq();
     initSticky();
     initYear();
+    initCheckoutTracking();
   });
 })();

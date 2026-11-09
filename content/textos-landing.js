@@ -180,6 +180,7 @@ window.SITE_DATA = {
         precoDe: "De R$ 97,00",
         precoChamada: "por apenas",
         preco: "10",                             // só o número (ex.: "10" ou "19,90")
+        valor: 10,                               // valor enviado ao pixel da Meta (InitiateCheckout)
         precoNota: "Pagamento único · acesso imediato",
         botao: "Quero economizar por R$10",
         link: "basico",                          // nome do link em "links" lá em cima, ou URL completa
@@ -202,6 +203,7 @@ window.SITE_DATA = {
         precoDe: "De R$ 197,00",
         precoChamada: "por apenas",
         preco: "19",
+        valor: 19,
         precoNota: "Só R$9 a mais — se paga no primeiro bico",
         botao: "Quero o Completo por R$19",
         link: "premium",
