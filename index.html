@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Diária Própria</title>
+  <meta name="description" content="">
+  <meta name="theme-color" content="#16130f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Favicon e ícones do app -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="assets/img/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <!-- Estilos: base (design system) + componentes e animações -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+  <!--
+    Os TEXTOS e OFERTAS deste site ficam em content/textos-landing.js.
+    Aqui fica só a estrutura. Os atributos data-text="..." apontam
+    para o campo de content/textos-landing.js que vai em cada lugar.
+  -->
+
+  <!-- Barra de oferta -->
+  <div class="topbar" role="banner" data-section="topbar">
+    <span class="topbar__label"><i data-icon="zap"></i> <span data-text="topbar.texto"></span></span>
+    <div class="timer" aria-live="off" aria-label="Tempo restante da oferta">
+      <span class="timer__box" data-timer="h">00</span><b>:</b>
+      <span class="timer__box" data-timer="m">00</span><b>:</b>
+      <span class="timer__box" data-timer="s">00</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hazard hazard--move" aria-hidden="true"></div>
+      <div class="hero__blueprint" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <p class="pill" data-text="hero.selo"></p>
+        <h1 class="hero__title" data-text="hero.titulo"></h1>
+        <p class="hero__lead" data-text="hero.texto"></p>
+
+        <div class="hero__media">
+          <div class="mockup">
+            <div class="mockup__screen">
+              <!-- Ilustração: parede sendo levantada (tijolos gerados em assets/js/main.js) -->
+              <svg class="scene" viewBox="0 0 640 360" role="img" aria-label="Ilustração de uma parede de tijolos sendo levantada com nível de bolha" data-scene>
+                <defs>
+                  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#2a231b"/>
+                    <stop offset="1" stop-color="#16130f"/>
+                  </linearGradient>
+                  <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+                    <path d="M32 0H0V32" fill="none" stroke="rgba(255,194,26,.07)" stroke-width="1"/>
+                  </pattern>
+                </defs>
+                <rect width="640" height="360" fill="url(#sky)"/>
+                <rect width="640" height="360" fill="url(#grid)"/>
+                <rect y="300" width="640" height="60" fill="#3a2f24"/>
+                <rect y="300" width="640" height="4" fill="#5a4a39"/>
+                <g data-bricks></g>
+                <!-- nível de bolha em cima da parede -->
+                <g class="scene__level">
+                  <rect x="230" y="98" width="180" height="26" rx="6" fill="#ffc21a" stroke="#16130f" stroke-width="3"/>
+                  <rect x="296" y="104" width="48" height="14" rx="7" fill="#d9f2c8" stroke="#16130f" stroke-width="2"/>
+                  <line x1="312" y1="104" x2="312" y2="118" stroke="#16130f" stroke-width="2"/>
+                  <line x1="328" y1="104" x2="328" y2="118" stroke="#16130f" stroke-width="2"/>
+                  <circle class="scene__bubble" cx="320" cy="111" r="5" fill="#1f9d55"/>
+                </g>
+                <!-- colher de pedreiro -->
+                <g class="scene__trowel">
+                  <path d="M520 250 l70 -40 l-14 60 z" fill="#c9c3b8" stroke="#16130f" stroke-width="3" stroke-linejoin="round"/>
+                  <path d="M548 236 l-26 -34" stroke="#16130f" stroke-width="5" stroke-linecap="round"/>
+                  <rect x="500" y="186" width="16" height="34" rx="6" transform="rotate(-38 508 203)" fill="#b5482b" stroke="#16130f" stroke-width="3"/>
+                </g>
+                <!-- balde de massa -->
+                <g class="scene__bucket">
+                  <path d="M60 252 h70 l-8 50 h-54 z" fill="#2d2620" stroke="#ffc21a" stroke-width="3" stroke-linejoin="round"/>
+                  <ellipse cx="95" cy="252" rx="35" ry="7" fill="#9a9285" stroke="#ffc21a" stroke-width="3"/>
+                </g>
+              </svg>
+              <div class="mockup__caption">
+                <span data-text="hero.mockup.linha1"></span>
+                <strong data-text="hero.mockup.linha2"></strong>
+                <em data-text="hero.mockup.linha3"></em>
+              </div>
+              <span class="play" aria-hidden="true"><i data-icon="play"></i></span>
+            </div>
+          </div>
+          <ul class="chips" data-list="hero.etiquetas" aria-hidden="true"></ul>
+        </div>
+
+        <a href="#oferta" class="btn btn--primary btn--xl" data-text="hero.botao"></a>
+        <p class="microcopy"><i data-icon="lock"></i> <span data-text="hero.rodapeBotao"></span></p>
+
+        <ul class="stats" data-list="hero.numeros"></ul>
+      </div>
+    </header>
+
+    <!-- DOR -->
+    <section class="section section--concrete">
+      <div class="container">
+        <p class="kicker" data-text="dor.chamada"></p>
+        <h2 class="title" data-text="dor.titulo"></h2>
+        <p class="subtitle" data-text="dor.subtitulo"></p>
+
+        <div class="compare">
+          <div class="compare__col compare__col--bad">
+            <h3 data-text="dor.sem.titulo"></h3>
+            <ul data-list="dor.sem.itens"></ul>
+          </div>
+          <div class="compare__col compare__col--good">
+            <h3 data-text="dor.com.titulo"></h3>
+            <ul data-list="dor.com.itens"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIMULADOR -->
+    <section class="section section--yellow sim" data-section="simulador">
+      <div class="container">
+        <p class="kicker kicker--dark" data-text="simulador.chamada"></p>
+        <h2 class="title" data-text="simulador.titulo"></h2>
+        <p class="subtitle" data-text="simulador.subtitulo"></p>
+
+        <div class="sim__grid">
+          <form class="sim__inputs" data-sim onsubmit="return false">
+            <label class="range">
+              <span class="range__top"><span data-text="simulador.diaria.rotulo"></span><output data-out="diaria"></output></span>
+              <input type="range" data-in="diaria">
+            </label>
+            <label class="range">
+              <span class="range__top"><span data-text="simulador.dias.rotulo"></span><output data-out="dias"></output></span>
+              <input type="range" data-in="dias">
+            </label>
+            <label class="range">
+              <span class="range__top"><span data-text="simulador.bicos.rotulo"></span><output data-out="bicos"></output></span>
+              <input type="range" data-in="bicos">
+            </label>
+          </form>
+
+          <div class="sim__result" aria-live="polite">
+            <div class="sim__row sim__row--bad">
+              <i data-icon="wallet"></i>
+              <p>Você pagaria em mão de obra<strong data-res="gasto">R$ 0</strong></p>
+            </div>
+            <div class="sim__row sim__row--good">
+              <i data-icon="award"></i>
+              <p>O curso Completo custa<strong data-res="curso">R$ 19</strong><small data-res="pct"></small></p>
+            </div>
+            <div class="sim__row sim__row--gold">
+              <i data-icon="trend"></i>
+              <p>Renda extra simulada por mês<strong data-res="renda">R$ 0</strong></p>
+            </div>
+            <a href="#oferta" class="btn btn--primary btn--block" data-text="simulador.botao"></a>
+            <p class="sim__aviso" data-text="simulador.aviso"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÓDULOS -->
+    <section class="section section--dark">
+      <div class="container">
+        <p class="kicker" data-text="modulos.chamada"></p>
+        <h2 class="title" data-text="modulos.titulo"></h2>
+
+        <div class="obra">
+          <aside class="obra__visual" aria-hidden="true">
+            <div class="obra__card">
+              <svg class="house" viewBox="0 0 320 240" data-house>
+                <defs>
+                  <pattern id="tij" width="24" height="12" patternUnits="userSpaceOnUse">
+                    <rect width="24" height="12" fill="#b5482b"/>
+                    <path d="M0 11.5H24M12 0V6M0 6H24M0 6V12M24 6V12" stroke="#7d2f1b" stroke-width="1.4"/>
+                  </pattern>
+                  <pattern id="bp" width="16" height="16" patternUnits="userSpaceOnUse">
+                    <path d="M16 0H0V16" fill="none" stroke="rgba(255,194,26,.10)"/>
+                  </pattern>
+                </defs>
+                <rect width="320" height="240" fill="url(#bp)"/>
+                <!-- planta (sempre visível, some quando a obra sobe) -->
+                <g class="s s-plan">
+                  <path d="M66 200V112h188v88z" fill="none" stroke="#ffc21a" stroke-width="2" stroke-dasharray="6 5"/>
+                  <path d="M160 112v88M66 156h94" fill="none" stroke="#ffc21a" stroke-width="1.5" stroke-dasharray="4 4" opacity=".7"/>
+                  <text x="160" y="100" text-anchor="middle" fill="#ffc21a" font-size="11" font-family="Archivo, sans-serif" font-weight="800" letter-spacing="2">PLANTA BAIXA</text>
+                </g>
+                <!-- terreno -->
+                <rect y="200" width="320" height="40" fill="#3a2f24"/>
+                <rect y="200" width="320" height="3" fill="#5a4a39"/>
+                <!-- canteiro: tapume e barracão -->
+                <g class="s s-cant">
+                  <path d="M8 200v-34h40v34M272 200v-34h40v34" fill="#c9a66b" stroke="#16130f" stroke-width="2"/>
+                  <path d="M8 178h40M272 178h40" stroke="#16130f" stroke-width="2"/>
+                  <rect x="18" y="150" width="22" height="16" fill="#9a9285" stroke="#16130f" stroke-width="2"/>
+                  <path d="M14 150l15-10 15 10" fill="#5a5a5a" stroke="#16130f" stroke-width="2"/>
+                </g>
+                <!-- fundação -->
+                <g class="s s-fund">
+                  <path d="M76 204v26M118 204v26M160 204v26M202 204v26M244 204v26" stroke="#9a9285" stroke-width="7"/>
+                  <rect x="60" y="192" width="200" height="12" fill="#8d867c" stroke="#16130f" stroke-width="2"/>
+                </g>
+                <!-- paredes e laje -->
+                <g class="s s-wall">
+                  <rect x="66" y="112" width="188" height="80" fill="url(#tij)" stroke="#16130f" stroke-width="2"/>
+                  <rect x="60" y="102" width="200" height="12" fill="#8d867c" stroke="#16130f" stroke-width="2"/>
+                  <rect x="96" y="132" width="34" height="28" fill="#16130f"/>
+                  <rect x="176" y="140" width="30" height="52" fill="#16130f"/>
+                </g>
+                <!-- reboco e acabamento -->
+                <g class="s s-reboco">
+                  <rect x="66" y="114" width="188" height="78" fill="#e8e4dc" stroke="#16130f" stroke-width="2"/>
+                  <rect x="96" y="132" width="34" height="28" fill="#7fb3d5" stroke="#16130f" stroke-width="3"/>
+                  <path d="M113 132v28M96 146h34" stroke="#16130f" stroke-width="2"/>
+                  <rect x="176" y="140" width="30" height="52" fill="#7d4a2b" stroke="#16130f" stroke-width="3"/>
+                  <circle cx="200" cy="168" r="2.5" fill="#ffc21a"/>
+                  <path d="M240 102V70" stroke="#16130f" stroke-width="3"/>
+                  <path d="M240 70h26l-6 8 6 8h-26z" fill="#ffc21a" stroke="#16130f" stroke-width="2"/>
+                </g>
+              </svg>
+              <div class="obra__info">
+                <p class="obra__stage" data-obra-etapa>Planejamento</p>
+                <p class="obra__mod" data-obra-mod>Módulo 1 de 10</p>
+                <div class="obra__meter"><span data-obra-meter></span></div>
+              </div>
+            </div>
+          </aside>
+          <ol class="modules modules--timeline" data-list="modulos.itens"></ol>
+        </div>
+        <p class="tip"><i data-icon="star"></i> <span data-text="modulos.dica"></span></p>
+      </div>
+    </section>
+
+    <!-- SÓ NO COMPLETO -->
+    <section class="section section--yellow">
+      <div class="container">
+        <p class="kicker kicker--dark" data-text="bonus.chamada"></p>
+        <h2 class="title" data-text="bonus.titulo"></h2>
+        <p class="subtitle" data-text="bonus.subtitulo"></p>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Item anterior" data-prev><i data-icon="left"></i></button>
+          <div class="carousel__track" data-track data-list="bonus.itens" tabindex="0" aria-label="O que vem no plano Completo, arraste para o lado"></div>
+          <button class="carousel__btn carousel__btn--next" type="button" aria-label="Próximo item" data-next><i data-icon="right"></i></button>
+          <div class="carousel__dots" data-dots aria-hidden="true"></div>
+          <p class="carousel__hint">← arraste para o lado →</p>
+        </div>
+
+        <div class="center">
+          <a href="#oferta" class="btn btn--dark btn--xl" data-text="bonus.botao"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section class="section section--concrete" data-section="depoimentos">
+      <div class="container">
+        <p class="kicker" data-text="depoimentos.chamada"></p>
+        <h2 class="title" data-text="depoimentos.titulo"></h2>
+        <div class="reviews" data-list="depoimentos.itens"></div>
+      </div>
+    </section>
+
+    <!-- OFERTA -->
+    <section class="section section--dark" id="oferta">
+      <div class="container">
+        <p class="kicker" data-text="oferta.chamada"></p>
+        <h2 class="title" data-text="oferta.titulo"></h2>
+        <p class="subtitle" data-text="oferta.subtitulo"></p>
+
+        <div class="plans" data-list="oferta.planos"></div>
+
+        <ul class="selos" data-list="oferta.selos"></ul>
+        <p class="plans__note" data-text="oferta.nota"></p>
+        <p class="viewers" data-section="viewers"><i data-icon="eye"></i> <span data-viewers></span> <span data-text="oferta.pessoasVendo.texto"></span></p>
+      </div>
+    </section>
+
+    <!-- GARANTIA -->
+    <section class="section section--concrete">
+      <div class="container guarantee">
+        <div class="seal" aria-hidden="true" data-seal>
+          <span data-text="garantia.dias"></span><small>dias</small>
+        </div>
+        <div class="guarantee__text">
+          <p class="kicker" data-text="garantia.chamada"></p>
+          <h2 class="title" data-text="garantia.titulo"></h2>
+          <p class="subtitle" data-text="garantia.texto"></p>
+          <a href="#oferta" class="btn btn--primary btn--xl" data-text="garantia.botao"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--dark">
+      <div class="container container--narrow">
+        <p class="kicker" data-text="faq.chamada"></p>
+        <h2 class="title" data-text="faq.titulo"></h2>
+        <div class="faq" data-list="faq.itens"></div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section section--final">
+      <div class="hazard hazard--move" aria-hidden="true"></div>
+      <div class="container center">
+        <p class="kicker kicker--dark"><i data-icon="zap"></i> <span data-text="final.chamada"></span></p>
+        <h2 class="title" data-text="final.titulo"></h2>
+        <p class="subtitle" data-text="final.subtitulo"></p>
+        <a href="#oferta" class="btn btn--dark btn--xl" data-text="final.botao"></a>
+        <p class="microcopy microcopy--dark"><i data-icon="lock"></i> <span data-text="final.rodapeBotao"></span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span data-year></span> <span data-text="rodape.marca"></span> · <span data-text="rodape.texto"></span></p>
+  </footer>
+
+  <!-- CTA fixo (mobile) -->
+  <a href="#oferta" class="sticky-cta" data-sticky><i data-icon="zap"></i> <span data-text="botaoFixo"></span></a>
+
+  <!-- 1º os ícones e os dados, 2º o script que monta a página -->
+  <script src="assets/js/icons.js"></script>
+  <script src="content/textos-landing.js"></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
