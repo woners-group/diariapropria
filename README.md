@@ -39,6 +39,7 @@ site/
 | Textos, preços, planos, FAQ          | `content/textos-landing.js`     |
 | Links de pagamento (Cakto)           | `content/textos-landing.js` → `links` |
 | ID do Pixel da Meta                  | `content/rastreamento.js` → `metaPixelId` |
+| Script da Utmify (UTMs)              | `index.html` → `<head>` (bloco comentado "Utmify") |
 | Cores e fontes                       | `assets/css/base.css` → `:root` |
 | Favicon                              | `assets/img/favicon/` + `favicon.ico` |
 
